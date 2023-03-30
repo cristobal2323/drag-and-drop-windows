@@ -1,15 +1,14 @@
 
 import { FC } from 'react';
-import Container from "../widgets/Container";
-import Item from "../widgets/Item";
+import Container from "./widgets/Container";
 
 
 interface Props {
-    name: string
+   
 }
 
 
-export const BlueComponent: FC<Props> = ({ name }) => {
+const DropComponent: FC<Props> = ({ }) => {
     return (
         <div id="container" className="bg-blue-500 w-full h-screen">
             <Container id="container-2">
@@ -19,3 +18,5 @@ export const BlueComponent: FC<Props> = ({ name }) => {
     )
 }
 
+
+export default DropComponent
