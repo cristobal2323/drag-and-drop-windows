@@ -1,11 +1,11 @@
 import React from "react";
 import Container from "./widgets/Container";
 import Item from "./widgets/Item";
-import { Link } from "react-router-dom";
+
 
 import widgets from "./widgets";
 
-const App: React.FC = () => {
+const DragComponent: React.FC = () => {
   return (
     <>
       <Container id="container-1">
@@ -21,4 +21,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default DragComponent;

@@ -8,13 +8,13 @@ import {
 
 import './index.css'
 
-import App from './App'
+import DragComponent from './drag'
 import DropComponent from "./drop"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<App />
+    element:<DragComponent />
   },
   {
     path: "drop",
