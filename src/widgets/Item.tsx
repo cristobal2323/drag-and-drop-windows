@@ -19,8 +19,8 @@ const Item: React.FC<ItemProps> = ({ id, content, parent }) => {
     setIsDragging(false);
   };
 
-  const classes = isDragging  ? "bg-white p-4 rounded-lg cursor-move border-blue-500" : 
-                                "bg-white p-4 rounded-lg cursor-move" 
+  const classes = isDragging  ? "opacity-5" : 
+                                "" 
 
   return (
     <div
