@@ -10,11 +10,11 @@ interface Props {
 
 const DropComponent: FC<Props> = ({ }) => {
     return (
-        <div id="container" className="bg-blue-500 w-full h-screen">
-            <Container id="container-2">
-                <h2>Drop</h2>
+        <section className="w-full h-screen"> 
+            <Container id="container-2" colors={{main: "bg-cyan-200", hover: "bg-cyan-100"}}>
+                <h2 className="text-black mb-3 text-xl">Container (Drop)</h2>
             </Container>
-        </div>
+        </section>
     )
 }
 

@@ -4,13 +4,15 @@ import widgets from "./";
 interface ContainerProps {
   id: string;
   children: ReactNode | ReactNode[];
+  colors?:{
+    main: String,
+    hover: String
+  }
 }
 
-const Container: React.FC<ContainerProps> = ({ id, children }) => {
+const Container: React.FC<ContainerProps> = ({ id, children, colors }) => {
   const [newChildren, setNewChildren] = useState<JSX.Element[]>([]);
   const [isDraggingOver, setIsDraggingOver] = useState(false);
-
-
 
   useEffect(() => {
     function checkDrop() {
@@ -19,6 +21,7 @@ const Container: React.FC<ContainerProps> = ({ id, children }) => {
         const element = document.getElementById(item);
         if (element) {
           element.remove();
+          localStorage.setItem("drop", "done");
         }
       }
     }
@@ -40,6 +43,8 @@ const Container: React.FC<ContainerProps> = ({ id, children }) => {
       .getData('text');
 
     const data = JSON.parse(obj);
+
+
     if (data.parent !== id) {
       const child = widgets.find((o) => { return o.name === data.id });
 
@@ -47,6 +52,9 @@ const Container: React.FC<ContainerProps> = ({ id, children }) => {
         const arr = [...newChildren];
         arr.push(child.widget);
         localStorage.setItem("drop", data.id);
+
+        const elementDelete = document.getElementById(data.id);
+        elementDelete?.remove()
         setNewChildren(arr);
       }
     }
@@ -72,10 +80,13 @@ const Container: React.FC<ContainerProps> = ({ id, children }) => {
     setIsDraggingOver(false);
   };
 
+  const mainColor = colors?.main? colors.main : 'bg-blue-500';
+  const hoverColor = 'bg-blue-200';
+
   return (
     <div
       id={id}
-      className={`p-4 rounded-lg shadow-md w-full h-screen ${isDraggingOver ? 'bg-blue-500' : 'bg-gray-200'}`}
+      className={`p-4 h-full w-full ${isDraggingOver ? hoverColor : mainColor}`}
       onDrop={drop}
       data-container="true"
       onDragOver={dragOver}
